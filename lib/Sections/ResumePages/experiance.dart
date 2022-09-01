@@ -16,25 +16,25 @@ Widget experiancePage() {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Experience",
+              Text("Tools",
                   style: TextStyle(
                       color: Color.fromARGB(255, 255, 118, 5),
                       fontWeight: FontWeight.w900,
                       letterSpacing: 5,
                       fontSize: 24)),
               SizedBox(
-                height: 32,
+                height: 40,
               ),
-              Text("More than 6 years experience as a ",
+              Text("Coding tools I've used for",
                   style: TextStyle(
                       fontWeight: FontWeight.w900,
                       // letterSpacing: 5,
                       color: Colors.white,
                       fontSize: 40)),
               SizedBox(
-                height: 8,
+                height: 24,
               ),
-              Text("Designer",
+              Text("Programming",
                   style: TextStyle(
                       fontWeight: FontWeight.w900,
                       letterSpacing: 5,
@@ -61,7 +61,7 @@ Widget experiancePage() {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Pentagon Design",
+                          "Visual Studio Code",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -92,7 +92,7 @@ Widget experiancePage() {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Animate Studio",
+                          "Android Studio",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

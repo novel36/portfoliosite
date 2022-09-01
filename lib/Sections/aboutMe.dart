@@ -84,7 +84,7 @@ class AboutMe extends StatelessWidget {
                           children: [
                             new TextSpan(
                               text:
-                                  '''I am  a web and mobile app developer from Ethiopia,Negelle Borena and currently living in Addis Abeba.I enjoy building  everything from small business sites to rich interactive web apps.if you are  seeking  a web presence or an employer looking to hire,you can get in touch with me''',
+                                  '''I am  a web and mobile app developer from Ethiopia,Negele Borena and currently living in Addis Abeba.I enjoy building  everything from small business sites to rich interactive web apps.if you are  seeking  a web presence or an employer looking to hire,you can get in touch with me''',
                               style: new TextStyle(
                                   fontSize: 16,
                                   color: Colors.white,

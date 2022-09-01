@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutterresponsivenavigation/Sections/ResumePages/education.dart';
 import 'package:flutterresponsivenavigation/Sections/ResumePages/experiance.dart';
 import 'package:flutterresponsivenavigation/Sections/ResumePages/skills.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -39,6 +40,7 @@ class MyResume extends StatelessWidget {
               controller: controller,
               physics: ClampingScrollPhysics(),
               children: [
+                educationPage(),
                 experiancePage(),
                 skillsPage(),
               ],
@@ -50,7 +52,7 @@ class MyResume extends StatelessWidget {
             // color: Colors.blue,
             child: SmoothPageIndicator(
               controller: controller,
-              count: 2,
+              count: 3,
               effect: WormEffect(
                   dotHeight: 10,
                   dotWidth: 10,

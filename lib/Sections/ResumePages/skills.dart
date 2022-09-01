@@ -119,12 +119,12 @@ Widget skillsPage() {
                       controlAffinity: ListTileControlAffinity.leading,
                       children: [
                         skillsBar(skillName: "Flutter", skillPercent: 0.75),
-                        skillsBar(skillName: "Graphics", skillPercent: 0.4),
                         skillsBar(skillName: "HTML", skillPercent: 0.85),
                         skillsBar(skillName: "CSS", skillPercent: 0.8),
                         skillsBar(skillName: "Javascript", skillPercent: 0.7),
                         skillsBar(skillName: "PHP", skillPercent: 0.65),
                         skillsBar(skillName: "Django", skillPercent: 0.65),
+                        skillsBar(skillName: "Graphics", skillPercent: 0.4),
                       ]),
                 ],
               ),
