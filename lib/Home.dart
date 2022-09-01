@@ -49,10 +49,12 @@ class _HomeState extends State<Home> {
                           print("object");
                         },
                         child: Text(
-                          "BLEAK",
+                          "NOVEL",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              foreground: Paint()..shader = linearGradient,
+                              fontWeight: FontWeight.w900,
+                              // color: Colors.white,
+                              letterSpacing: 10,
                               fontSize: 25),
                         ),
                       ),
@@ -131,7 +133,7 @@ class _HomeState extends State<Home> {
                   SizedBox(
                     height: 64,
                   ),
-                  AboutMe(),
+                  AboutMe(linearGradient: linearGradient),
                   SizedBox(
                     height: 64,
                   ),

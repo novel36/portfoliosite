@@ -37,7 +37,7 @@ class MyResume extends StatelessWidget {
               reverse: false,
               pageSnapping: true,
               controller: controller,
-              physics: BouncingScrollPhysics(),
+              physics: ClampingScrollPhysics(),
               children: [
                 experiancePage(),
                 skillsPage(),
@@ -58,7 +58,7 @@ class MyResume extends StatelessWidget {
                   activeDotColor: Color(0xffFF8C05)),
               onDotClicked: (index) {
                 controller.animateToPage(index,
-                    duration: Duration(seconds: 2), curve: Curves.bounceOut);
+                    duration: Duration(seconds: 1), curve: Curves.ease);
               },
             ),
           ),
