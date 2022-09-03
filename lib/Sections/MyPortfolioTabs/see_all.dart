@@ -1,74 +1,76 @@
-import 'package:flutter/material.dart';
-import 'package:hovering/hovering.dart';
+import 'dart:html';
 
-const _images = [
-  'https://picsum.photos/200/300',
-  'https://picsum.photos/200/301',
-  'https://picsum.photos/200/302',
-  'https://picsum.photos/200/303',
-  'https://picsum.photos/200/304',
-  'https://picsum.photos/200/305',
-];
+import 'package:flutter/material.dart';
+import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/portfolioData/portfoliodata.dart';
+import 'package:hovering/hovering.dart';
+// import 'portfolioData/portfoliodata.dart';
 
 GridView seeAll() {
-  return GridView.count(
-    crossAxisCount: 3,
-    childAspectRatio: 0.9,
-    crossAxisSpacing: 64,
-    mainAxisSpacing: 32,
-    children: [
-      HoverWidget(
-        hoverChild: Opacity(
-          opacity: 0.1,
+  return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 400,
+        childAspectRatio: 0.9,
+        crossAxisSpacing: 64,
+        mainAxisSpacing: 32,
+      ),
+      itemCount: images.length,
+      itemBuilder: (BuildContext ctx, index) {
+        return HoverWidget(
+          hoverChild: Stack(children: [
+            Opacity(
+              opacity: 0.4,
+              child: Container(
+                decoration: BoxDecoration(
+                    // color: Colors.red,
+
+                    image: DecorationImage(
+                        fit: BoxFit.cover, image: NetworkImage(images[index]))),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    projectTitle[index]["title"]!,
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    projectTitle[index]["type"]!,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.open_in_browser,
+                        color: Colors.blue,
+                      )),
+                  SizedBox(
+                    height: 24,
+                  )
+                ],
+              ),
+            ),
+          ]),
+          onHover: (event) {
+            print("did");
+          },
           child: Container(
             height: 200,
             decoration: BoxDecoration(
-                // color: Colors.red,
-
                 image: DecorationImage(
-                    fit: BoxFit.cover, image: NetworkImage(_images[0]))),
+                    fit: BoxFit.cover, image: NetworkImage(images[index]))),
           ),
-        ),
-        onHover: (event) {
-          print("did");
-        },
-        child: Container(
-          height: 200,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover, image: NetworkImage(_images[0]))),
-        ),
-      ),
-      Container(
-        height: 200,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover, image: NetworkImage(_images[1]))),
-      ),
-      Container(
-        height: 200,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover, image: NetworkImage(_images[2]))),
-      ),
-      Container(
-        height: 200,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover, image: NetworkImage(_images[3]))),
-      ),
-      Container(
-        height: 200,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover, image: NetworkImage(_images[4]))),
-      ),
-      Container(
-        height: 200,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover, image: NetworkImage(_images[5]))),
-      )
-    ],
-  );
+        );
+      });
 }
+
+// crossAxisCount: 3,
+//     childAspectRatio: 0.9,
+//     crossAxisSpacing: 64,
+//     mainAxisSpacing: 32,
+

@@ -7,6 +7,7 @@ import 'package:flutterresponsivenavigation/Sections/footer.dart';
 import 'package:flutterresponsivenavigation/Sections/myPortfolio.dart';
 import 'package:flutterresponsivenavigation/Sections/profileIntro.dart';
 import 'package:flutterresponsivenavigation/Sections/resume.dart';
+import 'package:flutterresponsivenavigation/mycard.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class Home extends StatefulWidget {
@@ -200,7 +201,7 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: 64,
                     ),
-                    footer()
+                    footer(),
                   ],
                 ),
               ),
