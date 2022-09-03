@@ -61,9 +61,6 @@ class _MyPortfolioState extends State<MyPortfolio>
                     unselectedBackgroundColor: Colors.transparent,
                     controller: tabController,
                     backgroundColor: Colors.transparent,
-
-                    // backgroundColor: Colors.red,
-                    // unselectedBackgroundColor: Colors.grey[300],
                     unselectedLabelStyle: TextStyle(color: Colors.white),
                     contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
                     labelStyle: TextStyle(
