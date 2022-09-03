@@ -16,7 +16,7 @@ class footer extends StatelessWidget {
       color: Color(0xff262626),
       // padding: EdgeInsets.all(),
       child: Text(
-        "Templates Hub",
+        "novel @ 2022",
         style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,

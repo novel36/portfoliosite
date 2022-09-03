@@ -8,8 +8,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class MyResume extends StatelessWidget {
-  MyResume({Key? key}) : super(key: key);
-
+  MyResume({Key? key, required this.linearGradient}) : super(key: key);
+  final Shader linearGradient;
   final PageController controller = PageController();
   @override
   Widget build(BuildContext context) {
@@ -40,9 +40,9 @@ class MyResume extends StatelessWidget {
               controller: controller,
               physics: ClampingScrollPhysics(),
               children: [
-                educationPage(),
-                experiancePage(),
                 skillsPage(),
+                educationPage(),
+                tools(linearGradient: linearGradient),
               ],
             ),
           ),

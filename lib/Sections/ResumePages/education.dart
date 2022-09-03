@@ -61,7 +61,7 @@ Widget educationPage() {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Elementary School (1 - 8)",
+                          "Elementary School",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

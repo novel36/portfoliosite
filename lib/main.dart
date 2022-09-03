@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       scrollBehavior: AppScrollBehavior(),
-      title: "PortfolioApp",
+      title: "Novel Portfolio",
       debugShowCheckedModeBanner: false,
       home: Home(),
       theme: ThemeData(cardColor: Color(0xFF212121)),

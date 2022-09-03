@@ -25,7 +25,7 @@ class _MyPortfolioState extends State<MyPortfolio>
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController = TabController(vsync: this, length: 4);
+    tabController = TabController(vsync: this, length: 5);
   }
 
   @override
@@ -72,7 +72,7 @@ class _MyPortfolioState extends State<MyPortfolio>
                     ),
                     tabs: [
                       Tab(
-                        text: "Set All",
+                        text: "See All",
                       ),
                       Tab(
                         text: "Mobile Apps",
@@ -82,6 +82,9 @@ class _MyPortfolioState extends State<MyPortfolio>
                       ),
                       Tab(
                         text: "Designs",
+                      ),
+                      Tab(
+                        text: "Graphics",
                       ),
                     ],
                   ),
@@ -98,6 +101,7 @@ class _MyPortfolioState extends State<MyPortfolio>
                           seeAll(),
                           mobileApps(),
                           website(),
+                          designs(),
                           designs()
                         ],
                       ),

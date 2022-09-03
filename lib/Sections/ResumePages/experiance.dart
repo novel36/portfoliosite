@@ -1,8 +1,9 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
-Widget experiancePage() {
+Widget tools({required Shader linearGradient}) {
   return Container(
     height: 380,
     child: Row(
@@ -16,6 +17,9 @@ Widget experiancePage() {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 32,
+              ),
               Text("Tools",
                   style: TextStyle(
                       color: Color.fromARGB(255, 255, 118, 5),
@@ -34,12 +38,25 @@ Widget experiancePage() {
               SizedBox(
                 height: 24,
               ),
-              Text("Programming",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 5,
-                      color: Color.fromARGB(255, 255, 118, 5),
-                      fontSize: 48))
+              Expanded(
+                child: AnimatedTextKit(
+                  animatedTexts: [
+                    TyperAnimatedText('Developing',
+                        textStyle: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 5,
+                            color: Color.fromARGB(255, 255, 118, 5),
+                            fontSize: 48)),
+                    TyperAnimatedText('Designing',
+                        textStyle: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 5,
+                            color: Color.fromARGB(255, 255, 118, 5),
+                            fontSize: 48)),
+                  ],
+                  repeatForever: true,
+                ),
+              ),
             ],
           ),
         )),
@@ -71,7 +88,7 @@ Widget experiancePage() {
                           height: 16,
                         ),
                         Text(
-                          "Graphic Designer (2017 - 2019)",
+                          "Source-code editor",
                           style: TextStyle(color: Colors.white70),
                         ),
                       ],
@@ -102,7 +119,7 @@ Widget experiancePage() {
                           height: 16,
                         ),
                         Text(
-                          "Graphic Designer (2015 - 2017)",
+                          "Official IDE for Android application development",
                           style: TextStyle(color: Colors.white70),
                         ),
                       ],
@@ -123,7 +140,7 @@ Widget experiancePage() {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Cute Studio",
+                          "Figma",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -133,7 +150,7 @@ Widget experiancePage() {
                           height: 16,
                         ),
                         Text(
-                          "Graphic Designer (2014 - 2015)",
+                          "A Design tool for interface design",
                           style: TextStyle(color: Colors.white70),
                         ),
                       ],
@@ -154,7 +171,7 @@ Widget experiancePage() {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "City Printing",
+                          "Adobe XD",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -164,7 +181,69 @@ Widget experiancePage() {
                           height: 16,
                         ),
                         Text(
-                          "Graphic Designer (2013 - 2014)",
+                          "A Design tool for web and mobile applications",
+                          style: TextStyle(color: Colors.white70),
+                        ),
+                      ],
+                    ),
+                  )),
+                ),
+                TimelineTile(
+                  indicatorStyle: IndicatorStyle(color: Color(0xffFF8C05)),
+                  afterLineStyle:
+                      LineStyle(color: Colors.white, thickness: 2.2),
+                  beforeLineStyle:
+                      LineStyle(color: Colors.white, thickness: 2.2),
+                  endChild: SizedBox(
+                      child: Padding(
+                    padding: const EdgeInsets.only(left: 24.0, top: 28),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Inkscape",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        Text(
+                          "A vector graphics editor used to create vector images",
+                          style: TextStyle(color: Colors.white70),
+                        ),
+                      ],
+                    ),
+                  )),
+                ),
+                TimelineTile(
+                  indicatorStyle: IndicatorStyle(color: Color(0xffFF8C05)),
+                  afterLineStyle:
+                      LineStyle(color: Colors.white, thickness: 2.2),
+                  beforeLineStyle:
+                      LineStyle(color: Colors.white, thickness: 2.2),
+                  endChild: SizedBox(
+                      child: Padding(
+                    padding: const EdgeInsets.only(left: 24.0, top: 28),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Atom",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        Text(
+                          "Source code editor ",
                           style: TextStyle(color: Colors.white70),
                         ),
                       ],
