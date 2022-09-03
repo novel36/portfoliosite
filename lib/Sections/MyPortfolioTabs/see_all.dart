@@ -1,11 +1,14 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/portfolioData/portfoliodata.dart';
+
 import 'package:hovering/hovering.dart';
 // import 'portfolioData/portfoliodata.dart';
 
-GridView seeAll() {
+GridView seeAll(
+    {required String tabtitle,
+    required List<Map<String, String>> projectTitle,
+    required List<String> images}) {
   return GridView.builder(
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 400,

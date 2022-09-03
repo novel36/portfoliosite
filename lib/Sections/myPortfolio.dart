@@ -4,6 +4,8 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/designs.dart';
 import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/mobile_apps.dart';
+import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/portfolioData/portfoliodata.dart';
+import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/projectsView.dart';
 import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/see_all.dart';
 import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/websites.dart';
 import 'package:flutterresponsivenavigation/Sections/ResumePages/experiance.dart';
@@ -95,11 +97,26 @@ class _MyPortfolioState extends State<MyPortfolio>
                       child: TabBarView(
                         controller: tabController,
                         children: <Widget>[
-                          seeAll(),
-                          mobileApps(),
-                          website(),
-                          designs(),
-                          designs()
+                          projectsView(
+                              images: images,
+                              projectTitle: projectTitle,
+                              tabtitle: "Set All"),
+                          projectsView(
+                              images: images,
+                              projectTitle: projectTitle,
+                              tabtitle: "Mobile Apps"),
+                          projectsView(
+                              images: images,
+                              projectTitle: projectTitle,
+                              tabtitle: "Websites"),
+                          projectsView(
+                              images: images,
+                              projectTitle: projectTitle,
+                              tabtitle: "Designs"),
+                          projectsView(
+                              images: images,
+                              projectTitle: projectTitle,
+                              tabtitle: "Graphics"),
                         ],
                       ),
                     ),
