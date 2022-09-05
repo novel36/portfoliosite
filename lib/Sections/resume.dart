@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutterresponsivenavigation/Sections/ResumePages/education.dart';
 import 'package:flutterresponsivenavigation/Sections/ResumePages/experiance.dart';
 import 'package:flutterresponsivenavigation/Sections/ResumePages/skills.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
@@ -14,7 +15,9 @@ class MyResume extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
+      height: ResponsiveValue(context,
+          defaultValue: 500.0,
+          valueWhen: [Condition.smallerThan(name: TABLET, value: 800.0)]).value,
       color: Color(0xff262626),
       // padding: EdgeInsets.all(32),
       child: Column(
@@ -40,9 +43,9 @@ class MyResume extends StatelessWidget {
               controller: controller,
               physics: ClampingScrollPhysics(),
               children: [
-                skillsPage(),
-                educationPage(),
-                tools(linearGradient: linearGradient),
+                skillsPage(context),
+                educationPage(context),
+                tools(context, linearGradient: linearGradient),
               ],
             ),
           ),

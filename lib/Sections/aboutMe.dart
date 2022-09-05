@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutMe extends StatelessWidget {
@@ -114,14 +115,17 @@ class AboutMe extends StatelessWidget {
                 ],
               ),
             )),
-            Expanded(
-                child: Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      opacity: 0.6,
-                      image: AssetImage("about.jpg"),
-                      fit: BoxFit.cover)),
-            )),
+            ResponsiveVisibility(
+              hiddenWhen: [Condition.smallerThan(name: TABLET)],
+              child: Expanded(
+                  child: Container(
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        opacity: 0.6,
+                        image: AssetImage("about.jpg"),
+                        fit: BoxFit.cover)),
+              )),
+            ),
           ],
         ));
   }

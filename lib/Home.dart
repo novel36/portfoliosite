@@ -8,6 +8,7 @@ import 'package:flutterresponsivenavigation/Sections/myPortfolio.dart';
 import 'package:flutterresponsivenavigation/Sections/profileIntro.dart';
 import 'package:flutterresponsivenavigation/Sections/resume.dart';
 import 'package:flutterresponsivenavigation/mycard.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class Home extends StatefulWidget {
@@ -50,8 +51,15 @@ class _HomeState extends State<Home> {
         backgroundColor: Color(0xFF212121),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(
-                left: 112, right: 112, top: 40, bottom: 64),
+            padding: EdgeInsets.only(
+                left: ResponsiveValue(context, defaultValue: 96.0, valueWhen: [
+                  Condition.smallerThan(name: TABLET, value: 16.0)
+                ]).value!,
+                right: ResponsiveValue(context, defaultValue: 96.0, valueWhen: [
+                  Condition.smallerThan(name: TABLET, value: 16.0)
+                ]).value!,
+                top: 40,
+                bottom: 64),
             child: StickyHeader(
               // overlapHeaders: true,
 
@@ -66,9 +74,7 @@ class _HomeState extends State<Home> {
                     Container(
                       child: TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.all(8)),
-                        onPressed: () {
-                          print("object");
-                        },
+                        onPressed: () {},
                         child: Text(
                           "NOVEL",
                           style: TextStyle(
@@ -80,82 +86,77 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        MouseRegion(
-                          cursor: MouseCursor.defer,
-                          onEnter: (event) {
-                            print("Cool");
-                          },
-                          child: TextButton(
+                    ResponsiveVisibility(
+                      replacement: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.menu,
+                            color: Colors.white,
+                          )),
+                      visibleWhen: [Condition.largerThan(name: TABLET)],
+                      hiddenWhen: [Condition.smallerThan(name: TABLET)],
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          MouseRegion(
+                            cursor: MouseCursor.defer,
+                            onEnter: (event) {
+                              print("Cool");
+                            },
+                            child: TextButton(
+                                style: TextButton.styleFrom(
+                                    padding: EdgeInsets.all(16)),
+                                onPressed: () {
+                                  scrollToSection(0);
+                                },
+                                child: Text(
+                                  "Home",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                          TextButton(
                               style: TextButton.styleFrom(
                                   padding: EdgeInsets.all(16)),
                               onPressed: () {
-                                scrollToSection(0);
+                                scrollToSection(1);
                               },
                               child: Text(
-                                "Home",
+                                "About",
                                 style: TextStyle(color: Colors.white),
                               )),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        TextButton(
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.all(16)),
-                            onPressed: () {
-                              scrollToSection(1);
-                            },
-                            child: Text(
-                              "About",
-                              style: TextStyle(color: Colors.white),
-                            )),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        TextButton(
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.all(16)),
-                            onPressed: () {
-                              scrollToSection(2);
-                            },
-                            child: Text(
-                              "Resume",
-                              style: TextStyle(color: Colors.white),
-                            )),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        TextButton(
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.all(16)),
-                            onPressed: () {
-                              scrollToSection(3);
-                            },
-                            child: Text(
-                              "Portfolio",
-                              style: TextStyle(color: Colors.white),
-                            )),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        TextButton(
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.all(16)),
-                            onPressed: () {
-                              scrollToSection(4);
-                            },
-                            child: Text(
-                              "Contact Me",
-                              style: TextStyle(color: Colors.white),
-                            )),
-                        SizedBox(
-                          width: 10,
-                        ),
-                      ],
-                    )
+                          TextButton(
+                              style: TextButton.styleFrom(
+                                  padding: EdgeInsets.all(16)),
+                              onPressed: () {
+                                scrollToSection(2);
+                              },
+                              child: Text(
+                                "Resume",
+                                style: TextStyle(color: Colors.white),
+                              )),
+                          TextButton(
+                              style: TextButton.styleFrom(
+                                  padding: EdgeInsets.all(16)),
+                              onPressed: () {
+                                scrollToSection(3);
+                              },
+                              child: Text(
+                                "Portfolio",
+                                style: TextStyle(color: Colors.white),
+                              )),
+                          TextButton(
+                              style: TextButton.styleFrom(
+                                  padding: EdgeInsets.all(16)),
+                              onPressed: () {
+                                scrollToSection(4);
+                              },
+                              child: Text(
+                                "Contact Me",
+                                style: TextStyle(color: Colors.white),
+                              )),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

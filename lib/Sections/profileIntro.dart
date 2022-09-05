@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class Profile extends StatelessWidget {
   const Profile({
@@ -20,11 +21,9 @@ class Profile extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(2.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
-                  flex: 2,
+                  flex: 1,
                   child: Container(
                     // color: Colors.red,
                     child: Column(
@@ -51,21 +50,21 @@ class Profile extends StatelessWidget {
                                 textStyle: TextStyle(
                                   foreground: Paint()..shader = linearGradient,
                                   // color: Colors.white,
-                                  fontSize: 56,
+                                  fontSize: 48,
                                   fontWeight: FontWeight.bold,
                                 )),
                             TyperAnimatedText('Mobile Apps Developer,',
                                 textStyle: TextStyle(
                                   foreground: Paint()..shader = linearGradient,
                                   // color: Colors.white,
-                                  fontSize: 60,
+                                  fontSize: 48,
                                   fontWeight: FontWeight.bold,
                                 )),
                             TyperAnimatedText('Web designer,',
                                 textStyle: TextStyle(
                                   foreground: Paint()..shader = linearGradient,
                                   // color: Colors.white,
-                                  fontSize: 60,
+                                  fontSize: 48,
                                   fontWeight: FontWeight.bold,
                                 ))
                           ],
@@ -99,25 +98,28 @@ class Profile extends StatelessWidget {
                       ],
                     ),
                   )),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Transform.rotate(
-                      angle: pi / 4,
-                      child: Container(
-                          width: 250,
-                          height: 250,
-                          // color: Colors.green,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: const DecorationImage(
-                                  opacity: 0.6,
-                                  image: AssetImage("intro-image.jpg"),
-                                  fit: BoxFit.cover))),
-                    ),
-                  ],
+              ResponsiveVisibility(
+                hiddenWhen: [Condition.smallerThan(name: TABLET)],
+                child: Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Transform.rotate(
+                        angle: pi / 4,
+                        child: Container(
+                            width: 200,
+                            height: 200,
+                            // color: Colors.green,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: const DecorationImage(
+                                    opacity: 0.6,
+                                    image: AssetImage("intro-image.jpg"),
+                                    fit: BoxFit.cover))),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
