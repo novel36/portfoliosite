@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterresponsivenavigation/Home.dart';
-import 'package:flutterresponsivenavigation/smooth.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
@@ -32,8 +31,8 @@ class MyApp extends StatelessWidget {
       scrollBehavior: AppScrollBehavior(),
       title: "Novel Portfolio",
       debugShowCheckedModeBanner: false,
-      home: Home(),
-      theme: ThemeData(cardColor: Color(0xFF212121)),
+      home: const Home(),
+      theme: ThemeData(cardColor: const Color(0xFF212121)),
     );
   }
 }

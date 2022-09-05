@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hovering/hovering.dart';
 
@@ -33,22 +34,22 @@ GridView mobileApps(
                 children: [
                   Text(
                     projectTitle[index]["title"]!,
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    style: const TextStyle(color: Colors.white, fontSize: 20),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Text(
                     projectTitle[index]["type"]!,
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ),
                   IconButton(
                       onPressed: () {},
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.open_in_browser,
                         color: Colors.blue,
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   )
                 ],
@@ -56,7 +57,9 @@ GridView mobileApps(
             ),
           ]),
           onHover: (event) {
-            print("did");
+            if (kDebugMode) {
+              print("did");
+            }
           },
           child: Container(
             height: 200,

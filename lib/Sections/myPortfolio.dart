@@ -1,20 +1,12 @@
+// ignore_for_file: file_names
+
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/designs.dart';
-import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/mobile_apps.dart';
 import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/portfolioData/portfoliodata.dart';
 import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/projectsView.dart';
-import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/see_all.dart';
-import 'package:flutterresponsivenavigation/Sections/MyPortfolioTabs/websites.dart';
-import 'package:flutterresponsivenavigation/Sections/ResumePages/experiance.dart';
-import 'package:flutterresponsivenavigation/Sections/ResumePages/skills.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 
 class MyPortfolio extends StatefulWidget {
-  MyPortfolio({Key? key}) : super(key: key);
+  const MyPortfolio({Key? key}) : super(key: key);
 
   @override
   State<MyPortfolio> createState() => _MyPortfolioState();
@@ -25,7 +17,6 @@ class _MyPortfolioState extends State<MyPortfolio>
   late final TabController tabController;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     tabController = TabController(vsync: this, length: 5);
   }
@@ -34,7 +25,7 @@ class _MyPortfolioState extends State<MyPortfolio>
   Widget build(BuildContext context) {
     return Container(
       height: 700,
-      color: Color(0xff262626),
+      color: const Color(0xff262626),
       // padding: EdgeInsets.all(32),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -44,7 +35,7 @@ class _MyPortfolioState extends State<MyPortfolio>
             height: 80,
             alignment: Alignment.bottomCenter,
             // color: Colors.red,
-            child: Text(
+            child: const Text(
               "My Portfolio",
               style: TextStyle(
                   fontWeight: FontWeight.w900,
@@ -52,8 +43,8 @@ class _MyPortfolioState extends State<MyPortfolio>
                   fontSize: 30),
             ),
           ),
-          SizedBox(height: 32),
-          SizedBox(),
+          const SizedBox(height: 32),
+          const SizedBox(),
           Expanded(
             flex: 2,
             child: SizedBox(
@@ -63,13 +54,14 @@ class _MyPortfolioState extends State<MyPortfolio>
                     unselectedBackgroundColor: Colors.transparent,
                     controller: tabController,
                     backgroundColor: Colors.transparent,
-                    unselectedLabelStyle: TextStyle(color: Colors.white),
-                    contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
-                    labelStyle: TextStyle(
+                    unselectedLabelStyle: const TextStyle(color: Colors.white),
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 16.0),
+                    labelStyle: const TextStyle(
                       color: Color(0xffFF8C05),
                       fontWeight: FontWeight.bold,
                     ),
-                    tabs: [
+                    tabs: const [
                       Tab(
                         text: "See All",
                       ),
@@ -87,7 +79,7 @@ class _MyPortfolioState extends State<MyPortfolio>
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 32,
                   ),
                   Expanded(

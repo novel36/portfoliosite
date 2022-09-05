@@ -1,10 +1,10 @@
-import 'dart:math';
+// ignore_for_file: file_names
 
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AboutMe extends StatelessWidget {
   const AboutMe({
@@ -16,7 +16,7 @@ class AboutMe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 400,
+        height: 420,
         color: const Color(0xff262626),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -41,70 +41,87 @@ class AboutMe extends StatelessWidget {
                           fontSize: 25),
                     ),
                   ),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
                     children: <Widget>[
-                      const Text(
-                        'I am ',
+                      Text(
+                        'I AM NOVEL',
                         style: TextStyle(
-                          fontSize: 32.0,
+                          fontSize: ResponsiveValue(context,
+                              defaultValue: 32.0,
+                              valueWhen: [
+                                const Condition.smallerThan(
+                                    name: TABLET, value: 24.0)
+                              ]).value,
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      DefaultTextStyle(
-                        style: const TextStyle(
-                            fontSize: 32.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            overflow: TextOverflow.ellipsis),
-                        child: AnimatedTextKit(
-                          animatedTexts: [
-                            TyperAnimatedText('Full-stack web developer,',
-                                textStyle: TextStyle(
-                                  foreground: Paint()..shader = linearGradient,
-                                )),
-                            TyperAnimatedText('Mobile Apps Developer,',
-                                textStyle: TextStyle(
-                                  foreground: Paint()..shader = linearGradient,
-                                )),
-                            TyperAnimatedText('Web designer.',
-                                textStyle: TextStyle(
-                                  foreground: Paint()..shader = linearGradient,
-                                )),
-                          ],
-                          repeatForever: true,
+                          fontWeight: FontWeight.normal,
                         ),
                       ),
                     ],
                   ),
+                  DefaultTextStyle(
+                    style: TextStyle(
+                        fontSize: ResponsiveValue(context,
+                            defaultValue: 48.0,
+                            valueWhen: [
+                              const Condition.smallerThan(
+                                  name: TABLET, value: 28.0)
+                            ]).value,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        overflow: TextOverflow.clip),
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        TyperAnimatedText('Full-stack web developer,',
+                            textStyle: TextStyle(
+                              foreground: Paint()..shader = linearGradient,
+                            )),
+                        TyperAnimatedText('Mobile Apps Developer,',
+                            textStyle: TextStyle(
+                              foreground: Paint()..shader = linearGradient,
+                            )),
+                        TyperAnimatedText('Web designer.',
+                            textStyle: TextStyle(
+                              foreground: Paint()..shader = linearGradient,
+                            )),
+                      ],
+                      repeatForever: true,
+                    ),
+                  ),
                   Wrap(
                     children: [
                       RichText(
-                        text: new TextSpan(
+                        text: TextSpan(
                           children: [
-                            new TextSpan(
+                            TextSpan(
                               text:
                                   '''I am  a web and mobile app developer from Ethiopia,Negele Borena and currently living in Addis Abeba.I enjoy building  everything from small business sites to rich interactive web apps.if you are  seeking  a web presence or an employer looking to hire,you can get in touch with me''',
-                              style: new TextStyle(
-                                  fontSize: 16,
+                              style: TextStyle(
+                                  fontSize: ResponsiveValue(context,
+                                      defaultValue: 16.0,
+                                      valueWhen: [
+                                        const Condition.smallerThan(
+                                            name: TABLET, value: 13.0)
+                                      ]).value,
                                   color: Colors.white,
                                   fontWeight: FontWeight.normal,
                                   letterSpacing: 0.3,
                                   textBaseline: TextBaseline.alphabetic,
                                   height: 1.5),
                             ),
-                            new TextSpan(
+                            TextSpan(
                               text: ' here',
-                              style: new TextStyle(
+                              style: const TextStyle(
                                   color: Colors.blue,
                                   fontWeight: FontWeight.normal,
                                   letterSpacing: 0.3,
                                   textBaseline: TextBaseline.alphabetic,
                                   height: 1.5),
-                              recognizer: new TapGestureRecognizer()
+                              recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                  print("object");
+                                  if (kDebugMode) {
+                                    print("object");
+                                  }
                                 },
                             ),
                           ],
@@ -116,7 +133,7 @@ class AboutMe extends StatelessWidget {
               ),
             )),
             ResponsiveVisibility(
-              hiddenWhen: [Condition.smallerThan(name: TABLET)],
+              hiddenWhen: const [Condition.smallerThan(name: TABLET)],
               child: Expanded(
                   child: Container(
                 decoration: const BoxDecoration(
