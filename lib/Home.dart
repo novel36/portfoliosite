@@ -34,6 +34,9 @@ class _HomeState extends State<Home> {
     GlobalKey(),
     GlobalKey(),
   ];
+  double _height = 0.0;
+  double _width = 0.0;
+  bool isVisiable = false;
 
   scrollToSection(int section) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -49,174 +52,247 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color(0xFF212121),
-        body: ExpandableNotifier(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(
-                  left: ResponsiveValue(context,
-                      defaultValue: 96.0,
-                      valueWhen: [
-                        const Condition.smallerThan(name: TABLET, value: 16.0)
-                      ]).value!,
-                  right: ResponsiveValue(context,
-                      defaultValue: 96.0,
-                      valueWhen: [
-                        const Condition.smallerThan(name: TABLET, value: 16.0)
-                      ]).value!,
-                  top: 40,
-                  bottom: 64),
-              child: StickyHeader(
-                // overlapHeaders: true,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(
+                left: ResponsiveValue(context, defaultValue: 96.0, valueWhen: [
+                  const Condition.smallerThan(name: TABLET, value: 16.0)
+                ]).value!,
+                right: ResponsiveValue(context, defaultValue: 96.0, valueWhen: [
+                  const Condition.smallerThan(name: TABLET, value: 16.0)
+                ]).value!,
+                top: 40,
+                bottom: 64),
+            child: StickyHeader(
+              // overlapHeaders: true,
 
-                header: Visibility(
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: const BoxDecoration(
-                      color: Color(0xff262626),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextButton(
-                          style: TextButton.styleFrom(
-                              padding: const EdgeInsets.all(8)),
-                          onPressed: () {},
-                          child: Text(
-                            "NOVEL",
-                            style: TextStyle(
-                                foreground: Paint()..shader = linearGradient,
-                                fontWeight: FontWeight.w900,
-                                // color: Colors.white,
-                                letterSpacing: 10,
-                                fontSize: 25),
+              header: Visibility(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: const BoxDecoration(
+                        color: Color(0xff262626),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(
+                            style: TextButton.styleFrom(
+                                padding: const EdgeInsets.all(8)),
+                            onPressed: () {},
+                            child: Text(
+                              "NOVEL",
+                              style: TextStyle(
+                                  foreground: Paint()..shader = linearGradient,
+                                  fontWeight: FontWeight.w900,
+                                  // color: Colors.white,
+                                  letterSpacing: 10,
+                                  fontSize: 25),
+                            ),
                           ),
-                        ),
-                        ResponsiveVisibility(
-                          replacement: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.menu,
-                                color: Colors.white,
-                              )),
-                          visibleWhen: const [
-                            Condition.largerThan(name: TABLET)
-                          ],
-                          hiddenWhen: const [
-                            Condition.smallerThan(name: TABLET)
-                          ],
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              MouseRegion(
-                                cursor: MouseCursor.defer,
-                                onEnter: (event) {
-                                  if (kDebugMode) {
-                                    print("Cool");
+                          ResponsiveVisibility(
+                            replacement: IconButton(
+                                onPressed: () {
+                                  if (_height == 0.0) {
+                                    setState(() {
+                                      _height = 250.0;
+                                    });
+                                  } else {
+                                    setState(() {
+                                      _height = 0.0;
+                                    });
                                   }
                                 },
-                                child: TextButton(
+                                icon: const Icon(
+                                  Icons.menu,
+                                  color: Colors.white,
+                                )),
+                            visibleWhen: const [
+                              Condition.largerThan(name: TABLET)
+                            ],
+                            hiddenWhen: const [
+                              Condition.smallerThan(name: TABLET)
+                            ],
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                MouseRegion(
+                                  cursor: MouseCursor.defer,
+                                  onEnter: (event) {
+                                    if (kDebugMode) {
+                                      print("Cool");
+                                    }
+                                  },
+                                  child: TextButton(
+                                      style: TextButton.styleFrom(
+                                          padding: const EdgeInsets.all(16)),
+                                      onPressed: () {
+                                        scrollToSection(0);
+                                      },
+                                      child: const Text(
+                                        "Home",
+                                        style: TextStyle(color: Colors.white),
+                                      )),
+                                ),
+                                TextButton(
                                     style: TextButton.styleFrom(
                                         padding: const EdgeInsets.all(16)),
                                     onPressed: () {
-                                      scrollToSection(0);
+                                      scrollToSection(1);
                                     },
                                     child: const Text(
-                                      "Home",
+                                      "About",
                                       style: TextStyle(color: Colors.white),
+                                    )),
+                                TextButton(
+                                    style: TextButton.styleFrom(
+                                        padding: const EdgeInsets.all(16)),
+                                    onPressed: () {
+                                      scrollToSection(2);
+                                    },
+                                    child: const Text(
+                                      "Resume",
+                                      style: TextStyle(color: Colors.white),
+                                    )),
+                                TextButton(
+                                    style: TextButton.styleFrom(
+                                        padding: const EdgeInsets.all(16)),
+                                    onPressed: () {
+                                      scrollToSection(3);
+                                    },
+                                    child: const Text(
+                                      "Portfolio",
+                                      style: TextStyle(color: Colors.white),
+                                    )),
+                                TextButton(
+                                    style: TextButton.styleFrom(
+                                        padding: const EdgeInsets.all(16)),
+                                    onPressed: () {
+                                      scrollToSection(4);
+                                    },
+                                    child: const Text(
+                                      "Contact Me",
+                                      style: TextStyle(color: Colors.white),
+                                    )),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      child: ResponsiveVisibility(
+                        hiddenWhen: [Condition.largerThan(name: TABLET)],
+                        child: AnimatedContainer(
+                          curve: Curves.easeInOut,
+                          padding: const EdgeInsets.all(24),
+                          height: _height,
+                          width: double.infinity,
+                          duration: Duration(milliseconds: 1),
+                          decoration: const BoxDecoration(
+                            color: Color(0xff262626),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: TextButton(
+                                    onPressed: () {},
+                                    child: Text(
+                                      "Home",
+                                      style: TextStyle(
+                                          fontSize: 17, color: Colors.white),
                                     )),
                               ),
                               TextButton(
-                                  style: TextButton.styleFrom(
-                                      padding: const EdgeInsets.all(16)),
-                                  onPressed: () {
-                                    scrollToSection(1);
-                                  },
-                                  child: const Text(
-                                    "About",
-                                    style: TextStyle(color: Colors.white),
+                                  onPressed: () {},
+                                  child: Text(
+                                    "Home",
+                                    style: TextStyle(
+                                        fontSize: 17, color: Colors.white),
                                   )),
                               TextButton(
-                                  style: TextButton.styleFrom(
-                                      padding: const EdgeInsets.all(16)),
-                                  onPressed: () {
-                                    scrollToSection(2);
-                                  },
-                                  child: const Text(
+                                  onPressed: () {},
+                                  child: Text(
                                     "Resume",
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 17, color: Colors.white),
                                   )),
                               TextButton(
-                                  style: TextButton.styleFrom(
-                                      padding: const EdgeInsets.all(16)),
-                                  onPressed: () {
-                                    scrollToSection(3);
-                                  },
-                                  child: const Text(
+                                  onPressed: () {},
+                                  child: Text(
                                     "Portfolio",
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 17, color: Colors.white),
                                   )),
                               TextButton(
-                                  style: TextButton.styleFrom(
-                                      padding: const EdgeInsets.all(16)),
-                                  onPressed: () {
-                                    scrollToSection(4);
-                                  },
-                                  child: const Text(
+                                  onPressed: () {},
+                                  child: Text(
                                     "Contact Me",
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 17, color: Colors.white),
                                   )),
                             ],
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                    // Visibility(
+                    //     visible: isVisiable,
+                    //     child: Text(
+                    //       "data",
+                    //       style: TextStyle(fontSize: 100),
+                    //     ))
+                  ],
                 ),
-                content: SingleChildScrollView(
-                  controller: _pageScrollController,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(
-                        height: 64,
-                      ),
-                      Profile(
-                        linearGradient: linearGradient,
-                        key: _globalkey[0],
-                      ),
-                      const SizedBox(
-                        height: 64,
-                      ),
-                      AboutMe(
-                        linearGradient: linearGradient,
-                        key: _globalkey[1],
-                      ),
-                      const SizedBox(
-                        height: 64,
-                      ),
-                      MyResume(
-                        linearGradient: linearGradient,
-                        key: _globalkey[2],
-                      ),
-                      const SizedBox(
-                        height: 64,
-                      ),
-                      MyPortfolio(
-                        key: _globalkey[3],
-                      ),
-                      const SizedBox(
-                        height: 64,
-                      ),
-                      ContactMe(
-                        key: _globalkey[4],
-                      ),
-                      const SizedBox(
-                        height: 64,
-                      ),
-                      const footer(),
-                    ],
-                  ),
+              ),
+              content: SingleChildScrollView(
+                controller: _pageScrollController,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      height: 64,
+                    ),
+                    Profile(
+                      linearGradient: linearGradient,
+                      key: _globalkey[0],
+                    ),
+                    const SizedBox(
+                      height: 64,
+                    ),
+                    AboutMe(
+                      linearGradient: linearGradient,
+                      key: _globalkey[1],
+                    ),
+                    const SizedBox(
+                      height: 64,
+                    ),
+                    MyResume(
+                      linearGradient: linearGradient,
+                      key: _globalkey[2],
+                    ),
+                    const SizedBox(
+                      height: 64,
+                    ),
+                    MyPortfolio(
+                      key: _globalkey[3],
+                    ),
+                    const SizedBox(
+                      height: 64,
+                    ),
+                    ContactMe(
+                      key: _globalkey[4],
+                    ),
+                    const SizedBox(
+                      height: 64,
+                    ),
+                    const footer(),
+                  ],
                 ),
               ),
             ),
