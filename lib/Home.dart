@@ -19,7 +19,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   final ScrollController _pageScrollController = ScrollController();
   final Shader linearGradient = const LinearGradient(
           colors: <Color>[Color(0xffd61a5e), Color(0xffff8c05)],
@@ -37,15 +37,31 @@ class _HomeState extends State<Home> {
   double _height = 0.0;
   double _width = 0.0;
   bool isVisiable = false;
+  bool isMenuOpened = false;
+  late AnimationController _controller;
 
   scrollToSection(int section) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Scrollable.ensureVisible(
         _globalkey[section].currentContext!,
-        duration: const Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 1000),
         curve: Curves.easeInOut,
       );
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 400));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -93,22 +109,46 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           ResponsiveVisibility(
-                            replacement: IconButton(
-                                onPressed: () {
-                                  if (_height == 0.0) {
-                                    setState(() {
-                                      _height = 250.0;
-                                    });
-                                  } else {
-                                    setState(() {
-                                      _height = 0.0;
-                                    });
-                                  }
-                                },
-                                icon: const Icon(
-                                  Icons.menu,
+                            replacement: GestureDetector(
+                              onTap: () {
+                                if (!isMenuOpened) {
+                                  _controller.forward();
+                                  isMenuOpened = true;
+
+                                  setState(() {
+                                    _height = 250.0;
+                                  });
+                                } else {
+                                  _controller.reverse();
+                                  isMenuOpened = false;
+
+                                  setState(() {
+                                    _height = 0.0;
+                                  });
+                                }
+                              },
+                              child: AnimatedIcon(
+                                  size: 36,
                                   color: Colors.white,
-                                )),
+                                  icon: AnimatedIcons.menu_close,
+                                  progress: _controller),
+                            ),
+                            // replacement: IconButton(
+                            //     onPressed: () {
+                            //       if (_height == 0.0) {
+                            //         setState(() {
+                            //           _height = 250.0;
+                            //         });
+                            //       } else {
+                            //         setState(() {
+                            //           _height = 0.0;
+                            //         });
+                            //       }
+                            //     },
+                            //     icon: const Icon(
+                            //       Icons.menu,
+                            //       color: Colors.white,
+                            //     )),
                             visibleWhen: const [
                               Condition.largerThan(name: TABLET)
                             ],
@@ -184,10 +224,11 @@ class _HomeState extends State<Home> {
                     ),
                     Flexible(
                       child: ResponsiveVisibility(
-                        hiddenWhen: [Condition.largerThan(name: TABLET)],
+                        hiddenWhen: [Condition.equals(name: TABLET)],
                         child: AnimatedContainer(
                           curve: Curves.easeInOut,
-                          padding: const EdgeInsets.all(24),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 8.0),
                           height: _height,
                           width: double.infinity,
                           duration: Duration(milliseconds: 1),
@@ -196,17 +237,8 @@ class _HomeState extends State<Home> {
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Expanded(
-                                child: TextButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "Home",
-                                      style: TextStyle(
-                                          fontSize: 17, color: Colors.white),
-                                    )),
-                              ),
                               TextButton(
                                   onPressed: () {},
                                   child: Text(
@@ -214,6 +246,19 @@ class _HomeState extends State<Home> {
                                     style: TextStyle(
                                         fontSize: 17, color: Colors.white),
                                   )),
+                              SizedBox(
+                                height: 16,
+                              ),
+                              TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "About",
+                                    style: TextStyle(
+                                        fontSize: 17, color: Colors.white),
+                                  )),
+                              SizedBox(
+                                height: 16,
+                              ),
                               TextButton(
                                   onPressed: () {},
                                   child: Text(
@@ -221,6 +266,9 @@ class _HomeState extends State<Home> {
                                     style: TextStyle(
                                         fontSize: 17, color: Colors.white),
                                   )),
+                              SizedBox(
+                                height: 16,
+                              ),
                               TextButton(
                                   onPressed: () {},
                                   child: Text(
@@ -228,10 +276,13 @@ class _HomeState extends State<Home> {
                                     style: TextStyle(
                                         fontSize: 17, color: Colors.white),
                                   )),
+                              SizedBox(
+                                height: 16,
+                              ),
                               TextButton(
                                   onPressed: () {},
                                   child: Text(
-                                    "Contact Me",
+                                    "Contact me",
                                     style: TextStyle(
                                         fontSize: 17, color: Colors.white),
                                   )),

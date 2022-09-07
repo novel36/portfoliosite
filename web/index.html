@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -38,8 +37,46 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+  <style type="text/css">
+    html {
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+     
+      background: #262626;
+      
+    }
+    .loading{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content:center;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+
+
+
+
+  
+
+
+
+</style>
 </head>
-<body>
+<body >
+  <div class="loading">
+ <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="yogamental-health.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+  </div>
+
+
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
